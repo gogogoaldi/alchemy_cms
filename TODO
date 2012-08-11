@@ -1,10 +1,11 @@
 * Style resets
 * Elemente müssen unfolded sein
 * On save replace element view
-* Nach editor.remove() / body.onclick geht das mouseleave der overlays nicht mehr
+* Nach editor.remove() / body.onclick geht das mouseleave der overlays nicht mehr. Alle onclicks sind kaputt
 * loading spinner während editor partial geladen wird
 * edit icon im element overlay mit text hinweis: "Klick zum bearbeiten"
 * alchemy css styles müssen namespace haben (zumindest die im frontend eingebundenen)
 * Alchemy.GUI initializer nach element editor partial insert aufrufen
 * TinyMCE.init nach element editor partial insert aufrufen
 * es muss noch deutlicher werden welches element gerade bearbeitet wird (sprachblasen pfeil nach oben?)
+* elemente von globalen seiten müssen auch editierbar sein
