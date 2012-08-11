@@ -6,7 +6,7 @@ if typeof @Alchemy == 'undefined'
   init: =>
     self = @Alchemy.onPageEditor
     self.options = @Alchemy.onPageMode.options
-    self.body = $('body')
+    self.body = $('html')
     self.overlay = self.buildOverlay()
     self.attachEvents()
 
@@ -38,8 +38,6 @@ if typeof @Alchemy == 'undefined'
 
     # remove the element editor if clicked outside of it
     self.body.on 'click', (event) ->
-      event.preventDefault()
-      event.stopPropagation()
       unless event.target == self.editor[0] or self.editor.find(event.target).length == 1
         self.removeEditor()
       return false
@@ -85,7 +83,7 @@ if typeof @Alchemy == 'undefined'
     width = dimensions.width
 
     # load the element editor partial via ajax
-    $.get "/alchemy/admin/elements/#{self.elementID}/edit.html", (data) ->
+    $.get "#{self.options.route}/admin/elements/#{self.elementID}/edit.html", (data) ->
       self.editor = editor = $('<div>', {id: 'alchemy_element_inplace_editor'})
       editor.css({
         left: position.left + width / 2,
