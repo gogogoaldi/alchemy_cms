@@ -507,6 +507,14 @@ module Alchemy
       'original'
     end
 
+    def to_partial_path
+      "alchemy/elements/#{name.underscore}_view"
+    end
+
+    def to_editor_partial_path
+      "alchemy/elements/#{name.underscore}_editor"
+    end
+
   private
 
     # creates the contents for this element as described in the elements.yml
