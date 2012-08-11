@@ -35,6 +35,7 @@ authorization do
     has_permission_on :alchemy_admin_users, :to => [:index]
     has_permission_on :alchemy_admin_trash, :to => [:index, :clear]
     has_permission_on :alchemy_admin_clipboard, :to => [:index, :insert, :remove, :clear]
+    has_permission_on :alchemy_elements, :to => [:edit]
   end
 
   role :editor do

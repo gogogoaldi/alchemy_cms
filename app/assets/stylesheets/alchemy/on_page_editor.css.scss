@@ -1,0 +1,29 @@
+@import "alchemy/defaults";
+
+div#alchemy_element_overlay {
+  background: rgba($light-blue, 0.5);
+  border: 4px solid $light-blue;
+  position: absolute;
+  z-index: 10000;
+}
+
+div#alchemy_element_inplace_editor {
+  background: rgba($medium-gray, 0.5);
+  @include box-shadow(0 0 16px $medium-gray);
+  @include rounded-corner;
+  position: absolute;
+  width: 480px;
+  height: auto;
+  padding: 8px;
+  margin-left: -240px;
+  overflow: hidden;
+  z-index: 10001;
+
+  .fold_element, .element_tools {
+    display: none;
+  }
+
+  .element_editor {
+    margin: 0;
+  }
+}

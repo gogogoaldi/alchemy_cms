@@ -159,7 +159,7 @@ module Alchemy
     # Renders the data-alchemy-element HTML attribut used for the preview window hover effect.
     def element_preview_code(element)
       return "" if element.nil?
-      " data-alchemy-element='#{element.id}'" if @preview_mode && element.page == @page
+      " data-alchemy-element=#{element.id}" if (@preview_mode && element.page == @page) || permitted_to?(:edit, :alchemy_elements)
     end
 
     # Returns the full url containing host, page and anchor for the given element

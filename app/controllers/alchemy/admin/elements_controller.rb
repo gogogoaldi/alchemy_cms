@@ -58,9 +58,16 @@ module Alchemy
         end
       end
 
-      # Saves all contents in the elements by calling save_content on each content
-      # And then updates the element itself.
-      # If a Ferret::FileNotFoundError raises we gonna catch it and rebuilding the index.
+      def edit
+        @element = Element.find(params[:id])
+        @page = @element.page
+        respond_to do |format|
+          format.html { render :partial => 'element', :locals => {:element => @element} }
+        end
+      end
+
+      # Saves all contents in the elements by calling save_contents
+      # and then updates the element itself.
       def update
         @element = Element.find_by_id(params[:id])
         if @element.save_contents(params)

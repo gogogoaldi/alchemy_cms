@@ -536,18 +536,19 @@ module Alchemy
       return if @preview_mode
       if permitted_to?(:edit, :alchemy_admin_pages)
         menu_bar_string = ""
-        menu_bar_string += stylesheet_link_tag("alchemy/menubar")
-        menu_bar_string += javascript_include_tag('alchemy/menubar')
+        menu_bar_string += stylesheet_link_tag("alchemy/onpage")
+        menu_bar_string += javascript_include_tag('alchemy/onpage')
         menu_bar_string += <<-STR
           <script type="text/javascript">
             try {
-              Alchemy.loadAlchemyMenuBar({
+              Alchemy.onPageMode.init({
                 page_id: #{@page.id},
                 route: '#{Alchemy.mount_point}',
-                locale: '#{current_user.language}'
+                locale: '#{current_user.language}',
+                csrf_token: '#{form_authenticity_token}'
               });
             } catch(e) {
-              if(console){console.log(e)}
+              if(console){console.log(e.message); console.debug(e)}
             }
           </script>
         STR
