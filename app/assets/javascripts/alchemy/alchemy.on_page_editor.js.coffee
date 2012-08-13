@@ -13,14 +13,8 @@ if typeof @Alchemy == 'undefined'
   attachEvents: =>
     self = @Alchemy.onPageEditor
 
-    $('[data-alchemy-element]').each (index) ->
-      element = $(this)
-
-      # store dimensions and a element reference
-      self.storeData(element)
-
-      # show an overlay on mouse enter
-      element.on 'mouseenter', self.showOverlay
+    # show an overlay on mouse enter
+    $('[data-alchemy-element]').on 'mouseenter', self.showOverlay
 
     # hide the overlay on mouse leave unless the editor is open
     self.overlay.on 'mouseleave', ->
@@ -42,12 +36,6 @@ if typeof @Alchemy == 'undefined'
         self.removeEditor()
       return false
 
-  storeData: (element) ->
-    element.data 'dimensions',
-      width: element.width(),
-      height: element.height(),
-      position: element.offset()
-
   buildOverlay: =>
     self = @Alchemy.onPageEditor
     overlay = $('<div>', {id: 'alchemy_element_overlay'})
@@ -64,12 +52,18 @@ if typeof @Alchemy == 'undefined'
   showOverlay: ->
     self = _this.Alchemy.onPageEditor
     element = $(this)
+    position = element.offset()
+    width = element.outerWidth()
+    height = element.outerHeight()
     self.overlay.data('alchemy-element', element)
-    dimensions = element.data('dimensions')
-    position = dimensions.position
+    element.data('dimensions', {
+      width: width,
+      height: height
+      position: position
+    })
     self.overlay.css
-      width: dimensions.width,
-      height: dimensions.height,
+      width: width,
+      height: height,
       left: position.left,
       top: position.top
     .show()

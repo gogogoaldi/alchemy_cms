@@ -9,3 +9,4 @@
 * TinyMCE.init nach element editor partial insert aufrufen
 * es muss noch deutlicher werden welches element gerade bearbeitet wird (sprachblasen pfeil nach oben?)
 * elemente von globalen seiten müssen auch editierbar sein
+* Nur aktivieren, wenn der User es explizit aktiviert (Zusätzlich noch eine config option?)
